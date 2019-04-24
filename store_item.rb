@@ -15,9 +15,25 @@ class Store
   end
 
   def info
-    puts "Item: #{@description}\nColor: #{@color}\nQuantity: #{@quantity}\nPrice: #{@price}"
+    puts "Item: #{@description}"
+    puts "Color: #{@color}"
+    puts "Quantity: #{@quantity}"
+    puts "Price: #{@price}"
   end
 end
+
+class Food < Store
+  def initialize(input_options)
+    super
+    @shelf_life = input_options[:shelf_life]
+  end
+
+  def info
+    super
+    puts "Shelf life: #{@shelf_life}"
+  end
+end
+
 
 item_1 = Store.new(
                   description: "balloons", 
@@ -40,7 +56,16 @@ item_3 = Store.new(
                   price: 4.00
                   )
 
-item_1.info
-item_2.info
-item_3.info
+food_1 = Food.new(
+                  description: "Hershey's Kisses", 
+                  color: "brown", 
+                  quantity: 50, 
+                  price: 3.00,
+                  shelf_life: "1 year"
+                  )
 
+# item_1.info
+# item_2.info
+# item_3.info
+
+food_1.info
